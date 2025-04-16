@@ -8,6 +8,43 @@ export const metadata = {
 };
 
 export default function Privacy() {
+  const handleFormSubmit = (event: React.FormEvent) => {
+    console.log("Form submiting...");
+    event.preventDefault();
+    const companyMail = "support@vibeinn.online";
+
+    // Get form values directly from elements to avoid FormData constructor error
+    const form = event.target as HTMLFormElement;
+    const username = form.username?.value || "";
+    const contact = form.contact?.value || "";
+    const reason = form.reason?.value || "";
+
+    const data = {
+      username,
+      contact,
+      reason,
+    };
+    console.log("Form submitted:", data);
+
+    // Create email content with account deletion details
+    const subject = encodeURIComponent("Account Deletion Request");
+    const body = encodeURIComponent(
+      `Account Deletion Request\n\n` +
+        `Username: ${data.username}\n` +
+        `Contact: ${data.contact}\n` +
+        `Reason for deletion: ${data.reason || "Not provided"}\n\n` +
+        `Please process this account deletion request as per our privacy policy.`
+    );
+
+    // Open the default email client with pre-populated fields
+    window.open(`mailto:${companyMail}?subject=${subject}&body=${body}`);
+
+    // Show confirmation alert after submitting
+    alert(
+      "Your deletion request has been submitted. We will contact you shortly."
+    );
+  };
+
   return (
     <main>
       <div className="container mx-auto py-16 px-4 max-w-4xl">
@@ -115,7 +152,7 @@ export default function Privacy() {
               fill out the form below:
             </p>
 
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleFormSubmit}>
               <div>
                 <label
                   htmlFor="username"
