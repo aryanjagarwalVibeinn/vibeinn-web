@@ -1,159 +1,155 @@
 import React, { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Check if page is scrolled
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Toggle mobile menu
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
-
   return (
-    <header
+    <nav
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4",
+        "fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 rounded-full px-6 py-3 w-[95%] max-w-4xl",
         isScrolled
-          ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg shadow-sm"
-          : "bg-transparent"
+          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg border border-gray-200/20 dark:border-gray-700/20"
+          : "bg-white/60 dark:bg-gray-900/60 backdrop-blur-md"
       )}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="flex items-center justify-between">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2">
-          <img
-            src="/lovable-uploads/6dfb1f13-34bd-4a33-99d7-e39bf0950e95.png"
-            alt="Vibeinn Logo"
-            className="h-8"
-          />
-          <span className="font-bold text-xl text-primary dark:text-white">
-            Vibeinn
+        <div className="flex items-center space-x-2">
+          <div className="w-8 h-8 bg-gradient-to-r from-[#0066FF] to-blue-400 rounded-full flex items-center justify-center">
+            <span className="text-white font-bold text-sm">V</span>
+          </div>
+          <span className="font-bold text-xl text-gray-900 dark:text-white">
+            VibeInn
           </span>
-        </a>
+        </div>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center space-x-8">
           <a
-            href="#features"
-            className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors"
+            href="/"
+            className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium"
           >
-            Features
+            Home
           </a>
           <a
-            href="#how-it-works"
-            className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors"
+            href="/community"
+            className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium"
           >
-            How it works
+            Community
           </a>
           <a
-            href="#rewards"
-            className="text-gray-600 hover:text-primary dark:text-gray-300 dark:hover:text-white transition-colors"
+            href="/services"
+            className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium"
           >
-            Rewards
+            Services
           </a>
-        </nav>
-
-        {/* Actions */}
-        <div className="hidden md:flex items-center gap-4">
-          <ThemeToggle />
-          <Button
-            variant="outline"
-            className="border-primary text-primary hover:bg-primary/10 dark:border-gray-600 dark:text-gray-300"
+          <a
+            href="/blog"
+            className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium"
           >
-            Sign In
-          </Button>
-          <Button className="bg-primary hover:bg-primary/90 text-white dark:bg-blue-600 dark:hover:bg-blue-700">
-            Get Started
-          </Button>
+            Blog
+          </a>
+          <a
+            href="/about-us"
+            className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium"
+          >
+            About
+          </a>
+          <a
+            href="/help-center"
+            className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium"
+          >
+            Help
+          </a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <div className="flex items-center gap-4 md:hidden">
+        {/* Right side actions */}
+        <div className="flex items-center space-x-4">
           <ThemeToggle />
-          <Button variant="ghost" onClick={toggleMobileMenu} className="p-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              className="w-6 h-6"
+          <Button
+            variant="default"
+            size="sm"
+            className="hidden md:flex bg-gradient-to-r from-[#0066FF] to-blue-500 hover:from-[#0052CC] hover:to-blue-600 text-white border-none rounded-full px-6"
+          >
+            Download App
+          </Button>
+
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden p-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full transition-colors"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="md:hidden mt-4 pt-4 border-t border-gray-200/20 dark:border-gray-700/20">
+          <div className="flex flex-col space-y-3">
+            <a
+              href="/"
+              className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium py-2"
             >
-              {isMobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </Button>
+              Home
+            </a>
+            <a
+              href="/community"
+              className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium py-2"
+            >
+              Community
+            </a>
+            <a
+              href="/services"
+              className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium py-2"
+            >
+              Services
+            </a>
+            <a
+              href="/blog"
+              className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium py-2"
+            >
+              Blog
+            </a>
+            <a
+              href="/about-us"
+              className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium py-2"
+            >
+              About
+            </a>
+            <a
+              href="/help-center"
+              className="text-gray-700 dark:text-gray-300 hover:text-[#0066FF] dark:hover:text-blue-400 transition-colors font-medium py-2"
+            >
+              Help
+            </a>
+            <Button
+              variant="default"
+              size="sm"
+              className="mt-3 bg-gradient-to-r from-[#0066FF] to-blue-500 hover:from-[#0052CC] hover:to-blue-600 text-white border-none rounded-full"
+            >
+              Download App
+            </Button>
+          </div>
         </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        className={cn(
-          "fixed inset-0 top-16 bg-white dark:bg-slate-900 p-4 flex flex-col items-center transition-all duration-300 ease-in-out md:hidden",
-          isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
-        )}
-      >
-        <nav className="flex flex-col items-center gap-6 py-8">
-          <a
-            href="#features"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="text-gray-600 hover:text-primary text-lg dark:text-gray-300 dark:hover:text-white transition-colors"
-          >
-            Features
-          </a>
-          <a
-            href="#how-it-works"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="text-gray-600 hover:text-primary text-lg dark:text-gray-300 dark:hover:text-white transition-colors"
-          >
-            How it works
-          </a>
-          <a
-            href="#rewards"
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="text-gray-600 hover:text-primary text-lg dark:text-gray-300 dark:hover:text-white transition-colors"
-          >
-            Rewards
-          </a>
-        </nav>
-        <div className="flex flex-col w-full gap-2 mt-4">
-          <Button
-            variant="outline"
-            className="w-full border-primary text-primary hover:bg-primary/10 dark:border-gray-600 dark:text-gray-300"
-          >
-            Sign In
-          </Button>
-          <Button className="w-full bg-primary hover:bg-primary/90 text-white dark:bg-blue-600 dark:hover:bg-blue-700">
-            Get Started
-          </Button>
-        </div>
-      </div>
-    </header>
+      )}
+    </nav>
   );
 };
 

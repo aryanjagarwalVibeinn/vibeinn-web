@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "@/components/home/Footer";
+import Navbar from "@/components/home/Navbar";
 
 export const metadata = {
   title: "About Us | Vibeinn",
@@ -10,7 +11,8 @@ export const metadata = {
 export default function AboutUs() {
   return (
     <main>
-      <div className="container mx-auto py-16 px-4">
+      <Navbar />
+      <div className="container mx-auto py-16 px-4 pt-32">
         <h1 className="text-4xl font-bold mb-8 dark:text-white">
           About Vibeinn
         </h1>

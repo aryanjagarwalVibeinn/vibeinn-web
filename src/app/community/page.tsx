@@ -1,5 +1,6 @@
 import React from "react";
 import Footer from "@/components/home/Footer";
+import Navbar from "@/components/home/Navbar";
 
 export const metadata = {
   title: "Community | Vibeinn",
@@ -61,7 +62,8 @@ export default function Community() {
 
   return (
     <main>
-      <div className="container mx-auto py-16 px-4">
+      <Navbar />
+      <div className="container mx-auto py-16 px-4 pt-32">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4 dark:text-white">
             Vibeinn Community
