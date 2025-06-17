@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import {
   ArrowRight,
   Smartphone,
@@ -10,6 +10,8 @@ import {
   Zap,
   Users,
   CheckCircle,
+  Phone,
+  Mail,
 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import {
@@ -20,10 +22,28 @@ import {
   CardTitle,
 } from "../../components/ui/card";
 import { Badge } from "../../components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "../../components/ui/dialog";
 import Navbar from "../../components/home/Navbar";
 import Footer from "@/components/home/Footer";
 
 const ServicesPage = () => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const contactSectionRef = useRef<HTMLDivElement>(null);
+
+  const scrollToContact = () => {
+    contactSectionRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  };
+
   const services = [
     {
       icon: <Smartphone className="w-12 h-12 text-[#0066FF]" />,
@@ -175,6 +195,7 @@ const ServicesPage = () => {
           </p>
           <Button
             size="lg"
+            onClick={scrollToContact}
             className="bg-gradient-to-r from-[#0066FF] to-blue-500 hover:from-[#0052CC] hover:to-blue-600 text-white rounded-full px-8"
           >
             Get Started Today
@@ -280,41 +301,11 @@ const ServicesPage = () => {
           </div>
         </div>
       </section>
-
-      {/* Stats Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-[#0066FF] mb-2">150+</div>
-              <div className="text-gray-600 dark:text-gray-300">
-                Projects Completed
-              </div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">50+</div>
-              <div className="text-gray-600 dark:text-gray-300">
-                Happy Clients
-              </div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-green-600 mb-2">5+</div>
-              <div className="text-gray-600 dark:text-gray-300">
-                Years Experience
-              </div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-red-600 mb-2">24/7</div>
-              <div className="text-gray-600 dark:text-gray-300">
-                Support Available
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#0066FF] to-blue-400">
+      <section
+        ref={contactSectionRef}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#0066FF] to-blue-400"
+      >
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
             Ready to Start Your Project?
@@ -324,22 +315,66 @@ const ServicesPage = () => {
             expert development services.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              variant="secondary"
-              className="bg-white text-[#0066FF] hover:bg-gray-100 rounded-full px-8"
+            <Dialog
+              open={isContactModalOpen}
+              onOpenChange={setIsContactModalOpen}
             >
-              <Users className="mr-2 w-5 h-5" />
-              Schedule Consultation
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-black hover:bg-white hover:text-[#0066FF] rounded-full px-8"
-            >
-              View Our Portfolio
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
+              <DialogTrigger asChild>
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="bg-white text-[#0066FF] hover:bg-gray-100 rounded-full px-8"
+                >
+                  <Users className="mr-2 w-5 h-5" />
+                  Get In Touch
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                  <DialogTitle className="text-2xl font-bold text-center">
+                    Contact Us
+                  </DialogTitle>
+                  <DialogDescription className="text-center">
+                    Ready to start your project? Get in touch with us today!
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-6 py-4">
+                  <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+                    <Phone className="w-6 h-6 text-[#0066FF]" />
+                    <div>
+                      <p className="font-semibold">Phone</p>
+                      <p className="text-gray-600">+91 95658 37503</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+                    <Mail className="w-6 h-6 text-[#0066FF]" />
+                    <div>
+                      <p className="font-semibold">Email</p>
+                      <p className="text-gray-600">
+                        purvank.sarawagi@vibeinn.online
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2 mt-4">
+                    <Button
+                      onClick={() => window.open("tel:+15551234567")}
+                      className="w-full bg-[#0066FF] hover:bg-[#0056CC]"
+                    >
+                      <Phone className="mr-2 w-4 h-4" />
+                      Call Now
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => window.open("mailto:contact@vibeinn.com")}
+                      className="w-full"
+                    >
+                      <Mail className="mr-2 w-4 h-4" />
+                      Send Email
+                    </Button>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </section>
