@@ -21,10 +21,12 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 rounded-full px-6 py-3 w-[95%] max-w-4xl",
+        "fixed top-4 left-1/2 transform -translate-x-1/2 z-50 px-6 py-3 w-[95%] max-w-4xl",
+        "transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300",
         isScrolled
           ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-lg border border-gray-200/20 dark:border-gray-700/20"
-          : "bg-white/60 dark:bg-gray-900/60 backdrop-blur-md"
+          : "bg-white/60 dark:bg-gray-900/60 backdrop-blur-md",
+        isOpen ? "rounded-2xl" : "rounded-full"
       )}
     >
       <div className="flex items-center justify-between">
