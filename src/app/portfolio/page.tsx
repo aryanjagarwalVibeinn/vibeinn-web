@@ -285,7 +285,7 @@ const PortfolioPage = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-3 pt-4">
+                  <div className="flex flex-col sm:flex-row gap-3 pt-4">
                     {project.link && (
                       <Button
                         onClick={() => window.open(project.link, "_blank")}
@@ -298,11 +298,10 @@ const PortfolioPage = () => {
                     <Dialog>
                       <DialogTrigger asChild>
                         <Button
-                          size="lg"
                           variant="secondary"
-                          className="bg-white text-[#0066FF] hover:bg-gray-100 rounded-full px-8"
+                          className="w-full sm:w-auto bg-white text-[#0066FF] hover:bg-gray-100 px-6 py-2"
                         >
-                          <Users className="mr-2 w-5 h-5" />
+                          <Users className="mr-2 w-4 h-4" />
                           Get In Touch
                         </Button>
                       </DialogTrigger>
