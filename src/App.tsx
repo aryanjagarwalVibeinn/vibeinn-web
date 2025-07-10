@@ -20,6 +20,7 @@ import Terms from "./app/terms/page";
 import Privacy from "./app/privacy/page";
 import Press from "./app/press/page";
 import Services from "./app/services/page";
+import PortfolioPage from "./app/portfolio/page";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/press" element={<Press />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
 
             {/* Catch-all route for 404 Not Found */}
             <Route path="/not-found" element={<NotFound />} />
