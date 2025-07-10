@@ -113,7 +113,7 @@ const PortfolioPage = () => {
         "Mobile-responsive design",
       ],
       status: "Live",
-      year: "2024",
+      year: "2025",
       link: "https://fresh-gift-team.vercel.app/",
       icon: <ShoppingCart className="w-8 h-8 text-green-600" />,
       stats: {
@@ -137,7 +137,7 @@ const PortfolioPage = () => {
         "Order fulfillment tracking",
       ],
       status: "Live",
-      year: "2024",
+      year: "2025",
       icon: <BarChart3 className="w-8 h-8 text-blue-600" />,
       stats: {
         dataPoints: "1M+",
@@ -176,20 +176,6 @@ const PortfolioPage = () => {
             AI-powered solutions, we bring innovative ideas to life with
             cutting-edge technology.
           </p>
-          <div className="flex items-center justify-center gap-8 text-sm text-gray-600 dark:text-gray-400">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              <span>2025 Projects</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users className="w-4 h-4" />
-              <span>60K+ Users</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Star className="w-4 h-4" />
-              <span>4.8 Rating</span>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -246,7 +232,7 @@ const PortfolioPage = () => {
                 </CardHeader>
 
                 <CardContent className="space-y-6">
-                  {/* Stats */}
+                  {/* Stats 
                   <div className="grid grid-cols-3 gap-4">
                     {Object.entries(project.stats).map(([key, value]) => (
                       <div key={key} className="text-center">
@@ -259,6 +245,7 @@ const PortfolioPage = () => {
                       </div>
                     ))}
                   </div>
+                  */}
 
                   {/* Features */}
                   <div>
@@ -397,15 +384,6 @@ const PortfolioPage = () => {
             >
               View Our Services
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => (window.location.href = "/contact")}
-              className="bg-transparent border-white text-white hover:bg-white hover:text-[#0066FF] rounded-full px-8"
-            >
-              <Users className="mr-2 w-5 h-5" />
-              Get In Touch
             </Button>
           </div>
         </div>

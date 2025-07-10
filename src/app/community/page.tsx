@@ -13,24 +13,24 @@ export default function Community() {
     {
       id: "mindfulness",
       name: "Mindfulness & Wellness",
-      members: 12453,
-      image: "/communities/mindfulness.jpg",
+      members: 124,
+      image: "/mind.png",
       description:
         "Share wellness tips, mindfulness practices, and support each other's well-being journey.",
     },
     {
       id: "creative-corner",
       name: "Creative Corner",
-      members: 9872,
-      image: "/communities/creative.jpg",
+      members: 72,
+      image: "/creative.png",
       description:
         "A space for artists, writers, and creators to share work and get inspired.",
     },
     {
       id: "tech-talk",
       name: "Tech Talk",
-      members: 15320,
-      image: "/communities/tech.jpg",
+      members: 120,
+      image: "/tech.png",
       description:
         "Discuss the latest in technology, gadgets, and digital trends.",
     },
@@ -84,11 +84,17 @@ export default function Community() {
                 key={community.id}
                 className="bg-white dark:bg-slate-800 rounded-lg overflow-hidden shadow-sm"
               >
-                <div className="h-48 bg-gray-200 dark:bg-gray-700">
-                  {/* Replace with actual images */}
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
-                    [Community Image]
-                  </div>
+                <div className="h-48 bg-gray-200 dark:bg-gray-700 overflow-hidden">
+                  <img
+                    src={community.image}
+                    alt={community.name}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
+                      target.parentElement!.innerHTML = `<div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">${community.name}</div>`;
+                    }}
+                  />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-2 dark:text-white">

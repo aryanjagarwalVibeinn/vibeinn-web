@@ -286,9 +286,6 @@ const ServicesPage = () => {
                   <div className="w-16 h-16 bg-gradient-to-r from-[#0066FF] to-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">
                     {step.step}
                   </div>
-                  {index < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-8 left-16 w-full h-0.5 bg-gradient-to-r from-blue-300 to-indigo-300"></div>
-                  )}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
                   {step.title}

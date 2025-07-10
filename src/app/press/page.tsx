@@ -9,13 +9,6 @@ export const metadata = {
 export default function Press() {
   const pressReleases = [
     {
-      id: 1,
-      date: "April 5, 2025",
-      title: "Vibeinn Reaches 1 Million Active Users",
-      excerpt:
-        "Popular authentic social platform celebrates milestone growth...",
-    },
-    {
       id: 2,
       date: "February 15, 2025",
       title: "Vibeinn Launches New Reward Program",
@@ -24,8 +17,8 @@ export default function Press() {
     },
     {
       id: 3,
-      date: "December 10, 2024",
-      title: "Vibeinn Named in 'Apps to Watch' for 2025",
+      date: "January 10, 2025",
+      title: "Vibeinn Partners with Online Communities",
       excerpt:
         "Industry analysts highlight Vibeinn's innovative approach to authentic social connections...",
     },
