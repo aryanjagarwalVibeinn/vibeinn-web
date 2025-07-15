@@ -40,7 +40,7 @@ const PortfolioPage = () => {
       description:
         "A comprehensive AI-powered social mobile application that lets you speak your heart out without fear of judgment. Be authentic, connect with like-minded people, and win rewards made for both Android and iOS platforms.",
       category: "Mobile Application",
-      image: "/vibe.png",
+      image: "/vibe.jpeg",
       technologies: [
         "React Native",
         "Node.js",
@@ -73,7 +73,7 @@ const PortfolioPage = () => {
       description:
         "An intelligent caption editing application powered by AI that automatically generates, edits, and optimizes captions for social media content with advanced NLP capabilities.",
       category: "AI Application",
-      image: "/placeholder.svg",
+      image: "/ai-caption.jpeg",
       technologies: ["React Native", "Gemini", "React", "OpenAI", "Cloudinary"],
       features: [
         "AI-powered caption generation",
