@@ -123,6 +123,29 @@ const PortfolioPage = () => {
       },
     },
     {
+      title: "Application Monitoring Tool",
+      description:
+        "Created a tool which automatically detects when any application or API is down, helping to easily identify application downtime and saving time and effort.",
+      category: "Monitoring Tool",
+      image: "/monitor.png",
+      technologies: ["React", "Node.js", "MySQL", "Express", "Chart.js"],
+      features: [
+        "Real-time downtime detection",
+        "Automated alerts",
+        "Regional monitoring",
+        "Downtime logs export (CSV/Excel)",
+        "Historical performance tracking",
+      ],
+      status: "Live",
+      year: "2025",
+      icon: <BarChart3 className="w-8 h-8 text-blue-600" />,
+      stats: {
+        detectionTime: "<30s",
+        reliability: "99.9%",
+        savings: "80% time",
+      },
+    },
+    {
       title: "FreshGift Dashboard",
       description:
         "A comprehensive admin dashboard for FreshGift e-commerce platform, providing detailed analytics, inventory management, and business insights.",
