@@ -93,6 +93,39 @@ const PortfolioPage = () => {
       },
     },
     {
+      title: "Cab Booking App",
+      description:
+        "A cab booking application that allows users to book a cab for their journey with ease and convenience.",
+      category: "Mobile Application",
+      image: "/ride.jpeg",
+      technologies: [
+        "React Native",
+        "Node.js",
+        "MongoDB",
+        "PostgreSQL",
+        "Redux",
+        "TypeScript",
+        "WebSockets",
+        "WebRTC",
+      ],
+      features: [
+        "Real-time cab availability",
+        "Multiple payment options",
+        "Driver ratings and reviews",
+        "Location-based services",
+        "User-friendly interface",
+      ],
+      status: "In Alpha Development",
+      link: "https://testflight.apple.com/join/HZXBbZfX",
+      year: "2025",
+      icon: <Bot className="w-8 h-8 text-purple-600" />,
+      stats: {
+        accuracy: "95%",
+        languages: "12+",
+        processingTime: "<2s",
+      },
+    },
+    {
       title: "FreshGift E-commerce",
       description:
         "A modern e-commerce platform for fresh gifts and products, featuring intuitive shopping experience, secure payments, and efficient order management.",
@@ -127,7 +160,7 @@ const PortfolioPage = () => {
       description:
         "Created a tool which automatically detects when any application or API is down, helping to easily identify application downtime and saving time and effort.",
       category: "Monitoring Tool",
-      image: "/monitor.png",
+      image: "/monitor.jpeg",
       technologies: ["React", "Node.js", "MySQL", "Express", "Chart.js"],
       features: [
         "Real-time downtime detection",
